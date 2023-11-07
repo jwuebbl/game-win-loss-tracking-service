@@ -1,0 +1,25 @@
+{
+    "gameRecordID":1,
+    "game":{
+        "gameID":1,
+        "gameName":"Rocket League"
+    },
+    "team":{
+        "teamID":1,
+        "teamName":"Uh Oh Boys",
+        "teamMember01":"Jeff",
+        "teamMember02":"Alex",
+        "teamMember03":"Drew",
+        "teamMember04":null,
+        "teamMember05":null,
+        "teamMember06":null,
+        "teamMember07":null,
+        "teamMember08":null,
+        "teamMember09":null,
+        "teamMember10":null
+    },
+    "win":false,
+    "lose":false,
+    "draw":false,
+    "gameDateTime":"2023-11-07T04:56:04.371+00:00"
+}

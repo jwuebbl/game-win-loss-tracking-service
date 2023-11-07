@@ -3,11 +3,11 @@ package com.whoisthebigdog.gamewinlosstrackingservice.models;
 import org.springframework.data.annotation.Id;
 import javax.persistence.*;
 
-public record TeamNumber(
+public record Team(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "TeamNumberID")
-    Long teamNumberID,
+    @Column(name = "TeamID")
+    Long teamID,
 
     @Column(name = "TeamName")
     String teamName,

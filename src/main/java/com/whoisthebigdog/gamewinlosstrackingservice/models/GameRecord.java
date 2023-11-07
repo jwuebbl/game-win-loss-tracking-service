@@ -14,12 +14,12 @@ public record GameRecord(
     Long gameRecordID,
 
     @ManyToOne
-    @JoinColumn(name = "GameNameID")
-    GameName gameName,
+    @JoinColumn(name = "GameID")
+    Game game,
 
     @ManyToOne
-    @JoinColumn(name = "TeamNumberID")
-    TeamNumber teamNumber,
+    @JoinColumn(name = "TeamID")
+    Team team,
 
     @Column(name = "Win")
     boolean win,
