@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/gamerecords")
 public class GameRecordController {
 
     private final GameRecordRepository gameRecordRepository;
@@ -23,23 +24,12 @@ public class GameRecordController {
         this.gameRecordRepository = gameRecordRepository;
     }
 
-    @GetMapping("/gamerecords/{requestId}")
-    public ResponseEntity<GameRecord> getGameRecordById(@PathVariable Long requestId) {
-        Optional<GameRecord> gameRecordOptional = gameRecordRepository.findById(requestId);
-        
-        // If the GameRecord exists, return it; else, return 404 (Not Found)
+    @GetMapping("/{requestedId}")
+    public ResponseEntity<GameRecord> getGameRecordById(@PathVariable Long requestedId) {
+        System.out.println("jeffrey " + requestedId);
+        Optional<GameRecord> gameRecordOptional = gameRecordRepository.findById(requestedId);
         return gameRecordOptional
                 .map(gameRecord -> ResponseEntity.ok().body(gameRecord)) // If present, return 200 with the GameRecord
                 .orElse(ResponseEntity.notFound().build()); // If absent, return 404 (Not Found)
     }
-
-    //     @GetMapping("/{requestedId}")
-    // public ResponseEntity<CashCard> findById(@PathVariable Long requestedId, Principal principal) {
-    //     CashCard cashCard = findCashCard(requestedId, principal);
-    //     if (cashCard != null) {
-    //         return ResponseEntity.ok(cashCard);
-    //     } else {
-    //         return ResponseEntity.notFound().build();
-    //     }
-    // }
 }

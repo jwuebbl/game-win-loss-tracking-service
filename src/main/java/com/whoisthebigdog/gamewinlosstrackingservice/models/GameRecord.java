@@ -5,6 +5,7 @@ import java.util.Date;
 
 public record GameRecord(
         @Id
+        @org.springframework.data.annotation.Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "GameRecordID")
         Long gameRecordID,

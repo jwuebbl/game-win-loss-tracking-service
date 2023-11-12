@@ -1,9 +1,9 @@
-CREATE TABLE Game (
+CREATE TABLE game (
     GameID SERIAL PRIMARY KEY,
     GameName VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE Team (
+CREATE TABLE team (
     TeamID SERIAL PRIMARY KEY,
     TeamName VARCHAR(50),
     TeamMember01 VARCHAR(50),
@@ -18,7 +18,7 @@ CREATE TABLE Team (
     TeamMember10 VARCHAR(50)
 );
 
-CREATE TABLE GameRecord (
+CREATE TABLE game_record (
     GameRecordID SERIAL PRIMARY KEY,
     GameID INT NOT NULL, -- FK
     TeamID INT NOT NULL, -- FK
@@ -29,9 +29,9 @@ CREATE TABLE GameRecord (
     -- Define the first foreign key constraint
     CONSTRAINT FK_Game_Name
         FOREIGN KEY (GameID)
-        REFERENCES Game(GameID),
+        REFERENCES game(GameID),
     -- Define the second foreign key constraint
     CONSTRAINT FK_Team_Number
         FOREIGN KEY (TeamID)
-        REFERENCES Team(TeamID)
+        REFERENCES team(TeamID)
 );
