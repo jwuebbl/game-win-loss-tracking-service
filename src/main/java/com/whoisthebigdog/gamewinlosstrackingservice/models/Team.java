@@ -1,6 +1,5 @@
 package com.whoisthebigdog.gamewinlosstrackingservice.models;
 
-import org.springframework.data.annotation.Id;
 import javax.persistence.*;
 
 public record Team(

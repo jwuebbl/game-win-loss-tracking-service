@@ -1,14 +1,13 @@
 package com.whoisthebigdog.gamewinlosstrackingservice.models;
 
-import org.springframework.data.annotation.Id;
 import javax.persistence.*;
 
 public record Game(
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "GameID")
-    Long gameID,
-
-    @Column(name = "GameName")
-    String gameName
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "GameID")
+        Long gameID,
+        
+        @Column(name = "GameName", length = 50, nullable = false)
+        String gameName
 ) {}
