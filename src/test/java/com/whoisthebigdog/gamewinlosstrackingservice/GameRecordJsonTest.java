@@ -1,6 +1,5 @@
 package com.whoisthebigdog.gamewinlosstrackingservice;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.whoisthebigdog.gamewinlosstrackingservice.models.*;
 
 import org.assertj.core.util.Arrays;
@@ -13,12 +12,10 @@ import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.boot.test.json.JsonContent;
 
 import java.io.IOException;
-
+import java.util.Calendar;
 import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 
 @JsonTest
 public class GameRecordJsonTest {
@@ -35,7 +32,15 @@ public class GameRecordJsonTest {
 
     @BeforeEach
     void setUp() {
-        Date expectedDate = new Date(123, 11, 7, 4, 56, 4);
+        Calendar yourCalendar = Calendar.getInstance();
+        yourCalendar.set(Calendar.YEAR, 2023); // Set the year
+        yourCalendar.set(Calendar.MONTH, Calendar.DECEMBER); // Set the month (Note: December is 11 as months are 0-based)
+        yourCalendar.set(Calendar.DAY_OF_MONTH, 7); // Set the day of the month
+        yourCalendar.set(Calendar.HOUR_OF_DAY, 4); // Set the hour of the day (24-hour format)
+        yourCalendar.set(Calendar.MINUTE, 56); // Set the minute
+        yourCalendar.set(Calendar.SECOND, 4); // Set the second
+        yourCalendar.set(Calendar.MILLISECOND, 0); // Set the millisecond
+        Date expectedDate = yourCalendar.getTime();
         gameRecords = Arrays.array(
             new GameRecord(1L, 
                 new Game(1L, "Rocket League"), 
