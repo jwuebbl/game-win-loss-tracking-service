@@ -6,6 +6,7 @@ public record Team(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TeamID")
+    @OneToMany
     Long teamID,
 
     @Column(name = "TeamName")

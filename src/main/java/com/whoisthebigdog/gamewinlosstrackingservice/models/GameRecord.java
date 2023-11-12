@@ -11,11 +11,11 @@ public record GameRecord(
         Long gameRecordID,
         
         @ManyToOne
-        @JoinColumn(name = "GameID")
+        @JoinColumn(name = "GameID", referencedColumnName = "GameID")
         Game game,
         
         @ManyToOne
-        @JoinColumn(name = "TeamID")
+        @JoinColumn(name = "TeamID", referencedColumnName = "TeamID") // referencing the primary key of Team
         Team team,
         
         @Column(name = "Win")
