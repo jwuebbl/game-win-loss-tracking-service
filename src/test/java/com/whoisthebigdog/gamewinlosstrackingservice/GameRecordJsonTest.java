@@ -107,24 +107,6 @@ public class GameRecordJsonTest {
             .isEqualTo("2023-12-07T10:56:04.000+00:00");
     }
 
-    // @Test
-    // void cashCardListSerializationTest() throws IOException {
-    //     assertThat(jsonList.write(cashCards)).isStrictlyEqualToJson("list.json");
-    // }   
-
-    // @Test
-    // void cashCardListDeserializationTest() throws IOException {
-    //     String expected = """
-    //             [
-    //                  {"id": 99, "amount": 123.45 , "owner": "sarah1"},
-    //                  {"id": 100, "amount": 1.00 , "owner": "sarah1"},
-    //                  {"id": 101, "amount": 150.00, "owner": "sarah1"}
-                                                  
-    //             ]
-    //             """;
-    //     assertThat(jsonList.parse(expected)).isEqualTo(cashCards);
-    // }
-
     @Test
     public void gameRecordDeserializationTest() throws IOException {
         String expected = """
@@ -175,4 +157,22 @@ public class GameRecordJsonTest {
         assertThat(json.parseObject(expected).draw()).isEqualTo(false);
         assertThat(json.parseObject(expected).gameDateTime()).isEqualTo("2023-12-07T10:56:04.000+00:00");
     }
+
+    // @Test
+    // void cashCardListSerializationTest() throws IOException {
+    //     assertThat(jsonList.write(cashCards)).isStrictlyEqualToJson("list.json");
+    // }   
+
+    // @Test
+    // void cashCardListDeserializationTest() throws IOException {
+    //     String expected = """
+    //             [
+    //                  {"id": 99, "amount": 123.45 , "owner": "sarah1"},
+    //                  {"id": 100, "amount": 1.00 , "owner": "sarah1"},
+    //                  {"id": 101, "amount": 150.00, "owner": "sarah1"}
+                                                  
+    //             ]
+    //             """;
+    //     assertThat(jsonList.parse(expected)).isEqualTo(cashCards);
+    // }
 }
