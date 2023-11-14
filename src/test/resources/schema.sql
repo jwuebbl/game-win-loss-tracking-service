@@ -1,37 +1,21 @@
-CREATE TABLE game (
-    GameID SERIAL PRIMARY KEY,
-    GameName VARCHAR(50) NOT NULL
+CREATE TABLE game
+(
+    game_id     BIGSERIAL PRIMARY KEY,
+    game_name   VARCHAR(256) NOT NULL    
 );
+
 
 CREATE TABLE team (
-    TeamID SERIAL PRIMARY KEY,
-    TeamName VARCHAR(50),
-    TeamMember01 VARCHAR(50),
-    TeamMember02 VARCHAR(50),
-    TeamMember03 VARCHAR(50),
-    TeamMember04 VARCHAR(50),
-    TeamMember05 VARCHAR(50),
-    TeamMember06 VARCHAR(50),
-    TeamMember07 VARCHAR(50),
-    TeamMember08 VARCHAR(50),
-    TeamMember09 VARCHAR(50),
-    TeamMember10 VARCHAR(50)
-);
-
-CREATE TABLE game_record (
-    GameRecordID SERIAL PRIMARY KEY,
-    GameID INT NOT NULL, -- FK
-    TeamID INT NOT NULL, -- FK
-    Win BOOLEAN NOT NULL,
-    Lose BOOLEAN NOT NULL,
-    Draw BOOLEAN NOT NULL,
-    GameDateTime TIMESTAMP NOT NULL, -- Add the DateTime column
-    -- Define the first foreign key constraint
-    CONSTRAINT FK_Game_Name
-        FOREIGN KEY (GameID)
-        REFERENCES game(GameID),
-    -- Define the second foreign key constraint
-    CONSTRAINT FK_Team_Number
-        FOREIGN KEY (TeamID)
-        REFERENCES team(TeamID)
+    team_id         BIGSERIAL PRIMARY KEY,
+    team_name       VARCHAR(50),
+    team_member_01  VARCHAR(50),
+    team_member_02  VARCHAR(50),
+    team_member_03  VARCHAR(50),
+    team_member_04  VARCHAR(50),
+    team_member_05  VARCHAR(50),
+    team_member_06  VARCHAR(50),
+    team_member_07  VARCHAR(50),
+    team_member_08  VARCHAR(50),
+    team_member_09  VARCHAR(50),
+    team_member_10  VARCHAR(50)
 );

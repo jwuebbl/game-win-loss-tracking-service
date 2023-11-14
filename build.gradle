@@ -41,7 +41,7 @@ tasks.named('test') {
 test {
     testLogging {
         // events "passed", "skipped", "failed" //, "standardOut", "standardError"
-        events "failed", "passed" // "standardOut", "standardError"
+        events "failed", "passed", "standardOut", "standardError"
         showExceptions true
         exceptionFormat "full"
         showCauses true

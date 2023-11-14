@@ -1,17 +1,9 @@
--- Insert sample data into the GameName table
-INSERT INTO game (GameName, GameID) VALUES
-    ('game 1', 1),
-    ('game 2', 2),
-    ('game 3', 3);
+INSERT INTO game(game_id, game_name) VALUES (1, 'Golf');
+INSERT INTO game(game_id, game_name) VALUES (2, 'Rocket League');
+INSERT INTO game(game_id, game_name) VALUES (3, 'Chess');
 
--- Insert sample data into the TeamNumber table
-INSERT INTO team (TeamName, TeamID, TeamMember01, TeamMember02, TeamMember03) VALUES
-    ('team A', 1, 'Player 1', 'Player 2', 'Player 3'),
-    ('team B', 2, 'Player 3', 'Player 4', 'Player 7'),
-    ('team C', 3, 'Player 5', 'Player 6', 'Player 8');
+INSERT INTO team (team_id, team_name, team_member_01, team_member_02, team_member_03)
+VALUES (1, 'Uh Oh Boyz', 'Alex', 'Drew', 'Jeff');
 
--- Insert sample data into the game_record table
-INSERT INTO game_record (GameRecordID, GameID, TeamID, Win, Lose, Draw, GameDateTime) VALUES
-    (1, 1, 1, TRUE, FALSE, FALSE, '2023-11-06 10:00:00'),
-    (2, 2, 2, FALSE, TRUE, FALSE, '2023-11-06 11:00:00'),
-    (3, 3, 3, FALSE, FALSE, TRUE, '2023-11-06 12:00:00');
+INSERT INTO team (team_id, team_name, team_member_01, team_member_02, team_member_03, team_member_04, team_member_05, team_member_06, team_member_07, team_member_08, team_member_09, team_member_10)
+VALUES (2, 'Team Alpha', 'Alice', 'Bob', 'Charlie', 'Diana', 'Evan', 'Fiona', 'George', 'Hannah', 'Ian', 'Julia');
