@@ -9,4 +9,4 @@ INSERT INTO team (team_id, team_name, team_member_01, team_member_02, team_membe
 VALUES (2, 'Team Alpha', 'Alice', 'Bob', 'Charlie', 'Diana', 'Evan', 'Fiona', 'George', 'Hannah', 'Ian', 'Julia');
 
 INSERT INTO game_record (game_record_id, game_id, team_id, win, lose, draw, game_date_time)
-VALUES (1, 2, 1, TRUE, FALSE, FALSE, '2023-12-07T10:56:04.000+00:00');
+VALUES (1, 1, 1, TRUE, FALSE, FALSE, '2023-12-07T10:56:04');

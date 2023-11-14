@@ -27,8 +27,23 @@ public class GameWinLossTrackingServiceApplicationTest {
         Number gameRecordId = documentContext.read("$.gameRecordId");
         assertThat(gameRecordId).isEqualTo(1);
 
-        // String gameName = documentContext.read("$.gameName");
-        // assertThat(gameName).isEqualTo("Golf");
+        Number gameId = documentContext.read("$.gameId");
+        assertThat(gameId).isEqualTo(1);
+        
+        Number teamId = documentContext.read("$.teamId");
+        assertThat(teamId).isEqualTo(1);
+
+        Boolean win = documentContext.read("$.win");
+        assertThat(win).isEqualTo(true);
+
+        Boolean lose = documentContext.read("$.lose");
+        assertThat(lose).isEqualTo(false);
+
+        Boolean draw = documentContext.read("$.draw");
+        assertThat(draw).isEqualTo(false);
+
+        String gameDateTime = documentContext.read("$.gameDateTime");
+        assertThat(gameDateTime).isEqualTo("2023-12-07T10:56:04");
     }
 
     @Test
