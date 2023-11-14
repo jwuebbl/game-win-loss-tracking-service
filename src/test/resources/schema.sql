@@ -19,3 +19,13 @@ CREATE TABLE team (
     team_member_09  VARCHAR(50),
     team_member_10  VARCHAR(50)
 );
+
+CREATE TABLE game_record (
+    game_record_id    BIGSERIAL PRIMARY KEY,
+    game_id           BIGINT REFERENCES game(game_id),
+    team_id           BIGINT REFERENCES team(team_id),
+    win               BOOLEAN,
+    lose              BOOLEAN,
+    draw              BOOLEAN,
+    game_date_time    TIMESTAMP
+);

@@ -18,6 +18,20 @@ public class GameWinLossTrackingServiceApplicationTest {
     TestRestTemplate restTemplate;
 
     @Test
+    void shouldReturnAGameRecordWithAKnownId() {
+        ResponseEntity<String> response = restTemplate
+        .getForEntity("/gamerecords/1", String.class);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+        DocumentContext documentContext = JsonPath.parse(response.getBody());
+        Number gameRecordId = documentContext.read("$.gameRecordId");
+        assertThat(gameRecordId).isEqualTo(1);
+
+        // String gameName = documentContext.read("$.gameName");
+        // assertThat(gameName).isEqualTo("Golf");
+    }
+
+    @Test
     void shouldReturnAGameWithAKnownId() {
         ResponseEntity<String> response = restTemplate
         .getForEntity("/games/1", String.class);
