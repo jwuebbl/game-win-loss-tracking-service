@@ -40,5 +40,37 @@ public class GameWinLossTrackingServiceApplicationTest {
         assertThat(response.getBody()).isBlank();
     }
 
+    @Test
+    void shouldReturnATeamWithAKnownId() {
+        ResponseEntity<String> response = restTemplate
+        .getForEntity("/teams/1", String.class);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
+        DocumentContext documentContext = JsonPath.parse(response.getBody());
+        Number id = documentContext.read("$.teamId");
+        assertThat(id).isEqualTo(1);
+
+        String teamName = documentContext.read("$.teamName");
+        assertThat(teamName).isEqualTo("Uh Oh Boyz");
+
+        String teamMember01 = documentContext.read("$.teamMember_01");
+        assertThat(teamMember01).isEqualTo("Alex");
+
+        String teamMember02 = documentContext.read("$.teamMember_02");
+        assertThat(teamMember02).isEqualTo("Drew");
+
+        String teamMember03 = documentContext.read("$.teamMember_03");
+        assertThat(teamMember03).isEqualTo("Jeff");
+
+
+    }
+
+    @Test
+    void shouldNotReturnATeamWithAnUnknownId() {
+        ResponseEntity<String> response = restTemplate
+        .getForEntity("/teams/1000", String.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+        assertThat(response.getBody()).isBlank();
+    }
 }
