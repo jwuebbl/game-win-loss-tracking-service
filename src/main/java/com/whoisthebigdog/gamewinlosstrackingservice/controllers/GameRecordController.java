@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.whoisthebigdog.gamewinlosstrackingservice.models.Game;
 import com.whoisthebigdog.gamewinlosstrackingservice.models.GameRecord;
 import com.whoisthebigdog.gamewinlosstrackingservice.repositories.GameRecordRepository;
+import com.whoisthebigdog.gamewinlosstrackingservice.repositories.GameRepository;
 
 import java.net.URI;
 import java.security.Principal;
@@ -37,14 +39,14 @@ public class GameRecordController {
     }
 
     @PostMapping
-    private ResponseEntity<Void> createGameRecord(@RequestBody GameRecord newGameRecordRequest, UriComponentsBuilder ucb) {
-      // it saves a new GameRecord for us, and returns the saved object with a unique id provided by the database. Amazing!
-      GameRecord newGameRecord = new GameRecord(null, newGameRecordRequest.gameId(), newGameRecordRequest.teamId(), newGameRecordRequest.win(), newGameRecordRequest.lose(),newGameRecordRequest.draw(),newGameRecordRequest.gameDateTime());
-      GameRecord savedGameRecord = gameRecordRepository.save(newGameRecord);
+    private ResponseEntity<Void> createGame(@RequestBody GameRecord newGameRecordRequest, UriComponentsBuilder ucb) {
+      // it saves a new Game for us, and returns the saved object with a unique id provided by the database. Amazing!
+      GameRecord savedGameRecord = gameRecordRepository.save(newGameRecordRequest);
       URI locationOfNewGameRecord = ucb
                 .path("gamerecords/{id}")
-                .buildAndExpand(savedGameRecord.gameRecordId())
+                .buildAndExpand(savedGameRecord.gameId())
                 .toUri();
       return ResponseEntity.created(locationOfNewGameRecord).build();
     }
+
 }
