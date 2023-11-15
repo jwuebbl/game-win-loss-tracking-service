@@ -126,35 +126,35 @@ public class GameWinLossTrackingServiceApplicationTest {
     @Test
     // @DirtiesContext // This annotation starts the next tests with a clean slate as if this tests never ran.
     void shouldCreateANewGameRecord() {
-        LocalDateTime timeStamp = LocalDateTime.now();
-        GameRecord newGameRecord = new GameRecord(null, 5L, 5L, true, false, false, timeStamp);
+        LocalDateTime now = LocalDateTime.now();
+        GameRecord newGameRecord = new GameRecord(null, 5L, 5L, true, false, false, now);
         ResponseEntity<Void> createResponse = restTemplate.postForEntity("/gamerecords", newGameRecord, Void.class);
         assertThat(createResponse.getStatusCode()).isEqualTo(HttpStatus.CREATED);
 
         URI locationOfNewGameRecord = createResponse.getHeaders().getLocation();
         ResponseEntity<String> getResponse = restTemplate.getForEntity(locationOfNewGameRecord, String.class);
         assertThat(getResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-
         DocumentContext documentContext = JsonPath.parse(getResponse.getBody());
+        
         Number gameRecordId = documentContext.read("$.gameRecordId");
         assertThat(gameRecordId).isNotNull();
 
         Number gameId = documentContext.read("$.gameId");
-        assertThat(gameId).isEqualTo(5);
+        assertThat(gameId).isEqualTo(newGameRecord.gameId());
         
         Number teamId = documentContext.read("$.teamId");
-        assertThat(teamId).isEqualTo(5);
+        assertThat(teamId).isEqualTo(newGameRecord.teamId());
 
         Boolean win = documentContext.read("$.win");
-        assertThat(win).isEqualTo(true);
+        assertThat(win).isEqualTo(newGameRecord.win());
 
         Boolean lose = documentContext.read("$.lose");
-        assertThat(lose).isEqualTo(false);
+        assertThat(lose).isEqualTo(newGameRecord.lose());
 
         Boolean draw = documentContext.read("$.draw");
-        assertThat(draw).isEqualTo(false);
+        assertThat(draw).isEqualTo(newGameRecord.draw());
 
         String gameDateTime = documentContext.read("$.gameDateTime");
-        assertThat(gameDateTime).isEqualTo(timeStamp);
+        assertThat(now).isEqualTo(newGameRecord.gameDateTime());
     }
 }

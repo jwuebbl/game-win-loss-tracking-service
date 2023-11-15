@@ -3,9 +3,6 @@ package com.whoisthebigdog.gamewinlosstrackingservice.models;
 import org.springframework.data.annotation.Id;
 import java.time.LocalDateTime;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-
 public record GameRecord(
     @Id 
     Long gameRecordId,

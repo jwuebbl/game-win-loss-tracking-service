@@ -9,13 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.whoisthebigdog.gamewinlosstrackingservice.models.Game;
 import com.whoisthebigdog.gamewinlosstrackingservice.models.GameRecord;
 import com.whoisthebigdog.gamewinlosstrackingservice.repositories.GameRecordRepository;
-import com.whoisthebigdog.gamewinlosstrackingservice.repositories.GameRepository;
 
 import java.net.URI;
-import java.security.Principal;
 import java.util.*;
 
 @RestController
