@@ -119,10 +119,11 @@ public class GameWinLossTrackingServiceApplicationTest {
         ResponseEntity<String> getResponse = restTemplate.getForEntity(locationOfNewGame, String.class);
         assertThat(getResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
         DocumentContext documentContext = JsonPath.parse(getResponse.getBody());
+        System.out.println(documentContext.jsonString());
         Number gameId = documentContext.read("$.gameId");
         assertThat(gameId).isNotNull();
         String gameName = documentContext.read("$.gameName");
-        assertThat(newGame.gameId()).isEqualTo(gameName);
+        assertThat(newGame.gameName()).isEqualTo(gameName);
     }
 
     @Test
@@ -134,7 +135,6 @@ public class GameWinLossTrackingServiceApplicationTest {
         ResponseEntity<String> getResponse = restTemplate.getForEntity(locationOfNewTeam, String.class);
         assertThat(getResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
         DocumentContext documentContext = JsonPath.parse(getResponse.getBody());
-        System.out.println(documentContext.jsonString());
         Number teamId = documentContext.read("$.teamId");
         assertThat(teamId).isNotNull();
         String teamName = documentContext.read("$.teamName");

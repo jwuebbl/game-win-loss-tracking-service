@@ -37,13 +37,13 @@ public class TeamController {
     }
 
     @PostMapping
-    private ResponseEntity<Void> createGame(@RequestBody Team newTeamRequest, UriComponentsBuilder ucb) {
+    private ResponseEntity<Void> createTeam(@RequestBody Team newTeamRequest, UriComponentsBuilder ucb) {
       // it saves a new Game for us, and returns the saved object with a unique id provided by the database. Amazing!
       Team savedTeam = teamRepository.save(newTeamRequest);
-      URI locationOfNewGame = ucb
-                .path("games/" + savedTeam.teamId())
+      URI locationOfNewTeam = ucb
+                .path("teams/" + savedTeam.teamId())
                 .buildAndExpand(savedTeam.teamId())
                 .toUri();
-      return ResponseEntity.created(locationOfNewGame).build();
+      return ResponseEntity.created(locationOfNewTeam).build();
     }
 }
