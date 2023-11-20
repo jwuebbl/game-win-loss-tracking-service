@@ -40,7 +40,7 @@ public class GameRecordController {
       // it saves a new Game for us, and returns the saved object with a unique id provided by the database. Amazing!
       GameRecord savedGameRecord = gameRecordRepository.save(newGameRecordRequest);
       URI locationOfNewGameRecord = ucb
-                .path("gamerecords/{id}")
+                .path("gamerecords/" + savedGameRecord.gameRecordId())
                 .buildAndExpand(savedGameRecord.gameId())
                 .toUri();
       return ResponseEntity.created(locationOfNewGameRecord).build();

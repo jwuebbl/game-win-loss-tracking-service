@@ -18,6 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.net.URI;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class GameWinLossTrackingServiceApplicationTest {
@@ -140,10 +141,10 @@ public class GameWinLossTrackingServiceApplicationTest {
         assertThat(gameRecordId).isNotNull();
 
         Number gameId = documentContext.read("$.gameId");
-        assertThat(gameId).isEqualTo(newGameRecord.gameId());
+        assertThat(gameId.toString()).isEqualTo(newGameRecord.gameId().toString());
         
         Number teamId = documentContext.read("$.teamId");
-        assertThat(teamId).isEqualTo(newGameRecord.teamId());
+        assertThat(teamId.toString()).isEqualTo(newGameRecord.teamId().toString());
 
         Boolean win = documentContext.read("$.win");
         assertThat(win).isEqualTo(newGameRecord.win());
@@ -154,7 +155,8 @@ public class GameWinLossTrackingServiceApplicationTest {
         Boolean draw = documentContext.read("$.draw");
         assertThat(draw).isEqualTo(newGameRecord.draw());
 
-        String gameDateTime = documentContext.read("$.gameDateTime");
-        assertThat(now).isEqualTo(newGameRecord.gameDateTime());
+        String gameDateTimeString = documentContext.read("$.gameDateTime");
+        LocalDateTime gameDateTime = LocalDateTime.parse(gameDateTimeString).truncatedTo(ChronoUnit.MILLIS);
+        assertThat(gameDateTime).isEqualTo(newGameRecord.gameDateTime().truncatedTo(ChronoUnit.MILLIS));
     }
 }
