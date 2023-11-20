@@ -40,7 +40,7 @@ public class GameController {
       // it saves a new Game for us, and returns the saved object with a unique id provided by the database. Amazing!
       Game savedGame = gameRepository.save(newGameRequest);
       URI locationOfNewGame = ucb
-                .path("games/{id}")
+                .path("games/" + savedGame.gameId())
                 .buildAndExpand(savedGame.gameId())
                 .toUri();
       return ResponseEntity.created(locationOfNewGame).build();
