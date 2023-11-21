@@ -20,7 +20,6 @@ import java.net.URI;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class GameApiTest {
     
-    
     @Autowired
     TestRestTemplate restTemplate;
 
@@ -29,11 +28,9 @@ public class GameApiTest {
         ResponseEntity<String> response = restTemplate
         .getForEntity("/games/5", String.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-
         DocumentContext documentContext = JsonPath.parse(response.getBody());
         Number id = documentContext.read("$.gameId");
         assertThat(id).isEqualTo(5);
-
         String gameName = documentContext.read("$.gameName");
         assertThat(gameName).isEqualTo("Golf");
     }
@@ -42,7 +39,6 @@ public class GameApiTest {
     void shouldNotReturnAGameWithAnUnknownId() {
         ResponseEntity<String> response = restTemplate
         .getForEntity("/games/1000", String.class);
-
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
         assertThat(response.getBody()).isBlank();
     }
