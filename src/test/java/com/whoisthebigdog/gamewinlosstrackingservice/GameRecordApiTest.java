@@ -2,9 +2,7 @@ package com.whoisthebigdog.gamewinlosstrackingservice;
 
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
-import com.whoisthebigdog.gamewinlosstrackingservice.models.Game;
 import com.whoisthebigdog.gamewinlosstrackingservice.models.GameRecord;
-import com.whoisthebigdog.gamewinlosstrackingservice.models.Team;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

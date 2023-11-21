@@ -3,8 +3,7 @@ package com.whoisthebigdog.gamewinlosstrackingservice;
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
 import com.whoisthebigdog.gamewinlosstrackingservice.models.Game;
-import com.whoisthebigdog.gamewinlosstrackingservice.models.GameRecord;
-import com.whoisthebigdog.gamewinlosstrackingservice.models.Team;
+
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +15,7 @@ import org.springframework.http.ResponseEntity;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.net.URI;
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
+
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class GameApiTest {
