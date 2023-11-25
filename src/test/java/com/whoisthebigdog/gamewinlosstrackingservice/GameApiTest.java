@@ -52,7 +52,6 @@ public class GameApiTest {
         ResponseEntity<String> getResponse = restTemplate.getForEntity(locationOfNewGame, String.class);
         assertThat(getResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
         DocumentContext documentContext = JsonPath.parse(getResponse.getBody());
-        System.out.println(documentContext.jsonString());
         Number gameId = documentContext.read("$.gameId");
         assertThat(gameId).isNotNull();
         String gameName = documentContext.read("$.gameName");

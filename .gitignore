@@ -38,3 +38,6 @@ out/
 
 ### Passwords ###
 databasePassword
+
+### Misc ###
+gradlewTestOutput.txt
