@@ -23,8 +23,10 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.data:spring-data-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
 	implementation 'javax.persistence:javax.persistence-api:2.2' // or a version that matches your requirements
+    runtimeOnly 'mysql:mysql-connector-java:8.0.29' // replace 8.0.29 with the desired version
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
