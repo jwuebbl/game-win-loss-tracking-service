@@ -1,5 +1,8 @@
 package com.whoisthebigdog.gamewinlosstrackingservice.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
+import java.security.Principal;
 
 import com.whoisthebigdog.gamewinlosstrackingservice.models.Game;
 import com.whoisthebigdog.gamewinlosstrackingservice.repositories.GameRepository;
@@ -19,11 +23,24 @@ import java.util.*;
 @RequestMapping("/games")
 public class GameController {
     
+    @Autowired
     private GameRepository gameRepository;
 
     public GameController(GameRepository gameRepository) {
         this.gameRepository = gameRepository;
     }
+
+    
+    @GetMapping()
+    public ResponseEntity<List<Game>> findAllGames() {
+        List<Game> games = (List<Game>) gameRepository.findAll();
+        if (!games.isEmpty()) {
+            return ResponseEntity.ok(games);
+        } else {
+            return ResponseEntity.noContent().build();
+        }
+    }
+    
 
     @GetMapping("/{requestedId}")
     public ResponseEntity<Optional<Game>> findById(@PathVariable Long requestedId) {

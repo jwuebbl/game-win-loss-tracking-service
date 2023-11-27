@@ -24,11 +24,8 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.data:spring-data-jdbc'
-	implementation 'javax.persistence:javax.persistence-api:2.2' // or a version that matches your requirements
+	implementation 'mysql:mysql-connector-java:8.0.28'
 
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
-	
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'com.h2database:h2'
 }
