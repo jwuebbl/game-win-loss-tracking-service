@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 
-import com.whoisthebigdog.gamewinlosstrackingservice.models.Game;
 import com.whoisthebigdog.gamewinlosstrackingservice.models.Team;
 import com.whoisthebigdog.gamewinlosstrackingservice.repositories.TeamRepository;
 
