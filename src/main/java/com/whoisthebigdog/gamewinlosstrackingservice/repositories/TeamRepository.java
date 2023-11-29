@@ -1,7 +1,7 @@
-// package com.whoisthebigdog.gamewinlosstrackingservice.repositories;
+package com.whoisthebigdog.gamewinlosstrackingservice.repositories;
 
-// import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.CrudRepository;
 
-// import com.whoisthebigdog.gamewinlosstrackingservice.models.Team;
+import com.whoisthebigdog.gamewinlosstrackingservice.models.Team;
 
-// public interface TeamRepository extends CrudRepository<Team, Long>{}
+public interface TeamRepository extends CrudRepository<Team, Long>{}
