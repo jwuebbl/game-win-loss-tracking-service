@@ -22,23 +22,22 @@ public class GameApiTest {
     
     @Autowired
     TestRestTemplate restTemplate;
-
     @Test
     void shouldReturnAGameWithAKnownId() {
         ResponseEntity<String> response = restTemplate
-        .getForEntity("/games/5", String.class);
+        .getForEntity("/games/1", String.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         DocumentContext documentContext = JsonPath.parse(response.getBody());
         Number id = documentContext.read("$.gameId");
-        assertThat(id).isEqualTo(5);
+        assertThat(id).isEqualTo(1);
         String gameName = documentContext.read("$.gameName");
-        assertThat(gameName).isEqualTo("Golf");
+        assertThat(gameName).isEqualTo("unit_test_game_01");
     }
 
     @Test
     void shouldNotReturnAGameWithAnUnknownId() {
         ResponseEntity<String> response = restTemplate
-        .getForEntity("/games/1000", String.class);
+        .getForEntity("/games/10000", String.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
         assertThat(response.getBody()).isBlank();
     }

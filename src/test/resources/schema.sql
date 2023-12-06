@@ -1,1 +1,0 @@
-/home/jwuebbl/projects/whoisthebigdog/game-win-loss-tracking-service-db/schema.sql
